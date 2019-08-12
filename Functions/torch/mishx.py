@@ -4,8 +4,6 @@ Script implements MishX activation:
 .. math::
     MishX(x) = x * tanh(ln((1 + e^{x})^{\\beta}))
 '''
- # import standard libraries
-import numpy as np
 
 # import torch
 import torch

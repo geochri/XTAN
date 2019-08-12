@@ -4,8 +4,6 @@ Script implements MilaX activation:
 .. math::
     MilaX(x) = x * tanh(softplus(\\beta + x)) = x * tanh(ln(1 + e^{\\beta + x}))
 '''
- # import standard libraries
-import numpy as np
 
 # import torch
 import torch
