@@ -19,7 +19,7 @@ class MilaX(Layer):
         (tuple of integers, does not include the samples axis)
         when using this layer as the first layer in a model.
         - Output: Same shape as the input.
-    Arguments:
+    Parameter:
         - beta: scale to control the concavity of the global minima of the function. (Trainable Parameter)
     Examples:
         >>> X_input = Input(input_shape)
@@ -31,9 +31,9 @@ class MilaX(Layer):
         self.supports_masking = True
 
     def build(self, input_shape):
-        # Create a trainable weight for alpha parameter. Alpha by default is initialized with random normal distribution.
+        # Create a trainable weight for beta parameter. Beta by default is initialized with -0.25.
         self.beta = self.add_weight(name='beta',
-                                     initializer='random_normal',
+                                     initializer=initializers.Constant(value=-0.25),
                                      trainable=True,
                                      shape = (1,))
         super(MilaX, self).build(input_shape)
@@ -59,7 +59,7 @@ class MishX(Layer):
         (tuple of integers, does not include the samples axis)
         when using this layer as the first layer in a model.
         - Output: Same shape as the input.
-    Arguments:
+    Parameter:
         - beta: A trainable parameter
     Examples:
         >>> X_input = Input(input_shape)
@@ -71,9 +71,9 @@ class MishX(Layer):
         self.supports_masking = True
     
     def build(self, input_shape):
-        # Create a trainable weight for alpha parameter. Alpha by default is initialized with random normal distribution.
+        # Create a trainable weight for beta parameter. Beta by default is initialized with 1.5.
         self.beta = self.add_weight(name='beta',
-                                     initializer='random_normal',
+                                     initializer=initializers.Constant(value=1.5),
                                      trainable=True,
                                      shape = (1,))
         super(MishX, self).build(input_shape)
